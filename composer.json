@@ -33,7 +33,7 @@
         "laravel/pint": "^1.32",
         "mockery/mockery": "^1.2.4",
         "orchestra/testbench": "^11.0",
-        "pestphp/pest": "^5.0",
+        "pestphp/pest": "^5.3",
         "pestphp/pest-plugin-livewire": "^5.0",
         "pestphp/pest-plugin-rector": "^5.0",
         "pestphp/pest-plugin-type-coverage": "^5.0",
