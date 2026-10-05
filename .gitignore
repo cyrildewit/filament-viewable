@@ -1,0 +1,24 @@
+# Composer Related
+composer.lock
+/vendor
+
+# Caches
+.phpunit.cache
+.phpunit.result.cache
+/build
+
+# PHPStan
+/phpstan.neon
+
+# Docker Compose reads this for variable interpolation, so a stray one silently
+# changes how `make` runs. Keep it out of the repository.
+/.env
+
+# Editors
+/.idea
+
+# Claude Code
+/.claude/docs
+/.claude/worktrees
+/.claude/settings.local.json
+/.claude/*.local.json

@@ -1,0 +1,103 @@
+{
+    "name": "cyrildewit/filament-viewable",
+    "description": "View statistics for your Filament panel, built on Eloquent Viewable",
+    "keywords": [
+        "laravel",
+        "filament",
+        "filament-plugin",
+        "eloquent",
+        "views",
+        "viewable",
+        "analytics",
+        "counter"
+    ],
+    "homepage": "https://github.com/cyrildewit/filament-viewable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cyril de Wit",
+            "email": "info@cyrildewit.nl",
+            "homepage": "https://cyrildewit.nl",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.5",
+        "cyrildewit/eloquent-viewable": "^9.0",
+        "filament/filament": "^5.0",
+        "illuminate/contracts": "^13.0",
+        "illuminate/support": "^13.0"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.21",
+        "mockery/mockery": "^1.2.4",
+        "orchestra/testbench": "^11.0",
+        "pestphp/pest": "^5.0",
+        "pestphp/pest-plugin-livewire": "^5.0",
+        "pestphp/pest-plugin-rector": "^5.0",
+        "pestphp/pest-plugin-type-coverage": "^5.0",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-strict-rules": "^2.0",
+        "phpunit/php-code-coverage": "^14.4",
+        "rector/rector": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "CyrildeWit\\FilamentViewable\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CyrildeWit\\FilamentViewable\\Tests\\": "tests/",
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "workbench:build": [
+            "@php vendor/bin/testbench workbench:build --ansi",
+            "@php vendor/bin/testbench filament:assets --ansi"
+        ],
+        "lint": "pint",
+        "test:lint": "pint --test",
+        "test": "pest --parallel",
+        "test:arch": "pest --testsuite=Arch",
+        "test:unit": "pest --testsuite=Unit",
+        "test:feature": "pest --testsuite=Feature",
+        "test:coverage": "pest --parallel --coverage --coverage-clover build/coverage.xml --min=100",
+        "test:types": "phpstan analyse --memory-limit=512M",
+        "test:type-coverage": "pest --type-coverage --memory-limit=512M --min=100",
+        "rector": "rector",
+        "ready": [
+            "@rector",
+            "@lint",
+            "@test:types",
+            "@test:type-coverage",
+            "@test"
+        ]
+    },
+    "config": {
+        "process-timeout": 0,
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CyrildeWit\\FilamentViewable\\FilamentViewableServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
