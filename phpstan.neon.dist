@@ -1,0 +1,40 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+
+parameters:
+    level: 10
+
+    paths:
+        - src
+        - resources/lang
+        - workbench/app
+        - workbench/database
+
+    checkModelProperties: true
+    noUnnecessaryCollectionCall: true
+    checkNullables: true
+    treatPhpDocTypesAsCertain: true
+    checkBenevolentUnionTypes: true
+    checkUninitializedProperties: true
+    checkMissingCallableSignature: true
+    checkTooWideReturnTypesInProtectedAndPublicMethods: true
+    checkTooWideThrowTypesInProtectedAndPublicMethods: true
+    reportPossiblyNonexistentGeneralArrayOffset: true
+    reportPossiblyNonexistentConstantArrayOffset: true
+    reportAlwaysTrueInLastCondition: true
+    reportAnyTypeWideningInVarTag: true
+    reportWrongPhpDocTypeInVarTag: true
+
+    strictRules:
+        # Larastan forwards Eloquent builder calls through __callStatic, which this rule misreads.
+        dynamicCallOnStaticMethod: false
+
+    # The workbench runs the core's migration stub, which has no class PHPStan
+    # can discover on its own.
+    scanFiles:
+        - vendor/cyrildewit/eloquent-viewable/database/migrations/create_views_table.php.stub
+
+    databaseMigrationsPath:
+        - workbench/database/migrations
