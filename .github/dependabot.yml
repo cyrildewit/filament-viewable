@@ -1,0 +1,25 @@
+# Please see the documentation for all configuration options:
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+
+    - package-ecosystem: "github-actions"
+      directory: "/"
+      schedule:
+          interval: "weekly"
+      labels:
+          - "dependencies"
+
+    # Development dependencies only. The runtime constraints in `require`
+    # define which Filament, Laravel and core versions this plugin supports,
+    # so they stay a deliberate choice rather than an automated bump.
+    - package-ecosystem: "composer"
+      directory: "/"
+      schedule:
+          interval: "weekly"
+      allow:
+          - dependency-type: "development"
+      versioning-strategy: "increase"
+      labels:
+          - "dependencies"
