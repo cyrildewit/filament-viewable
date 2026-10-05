@@ -1,0 +1,40 @@
+# The workbench behind `make serve` and `make workbench`: a Filament panel at
+# /admin with the plugin registered, seeded posts and views. Sign in as
+# admin@example.com with `password`.
+laravel: '@testbench'
+
+env:
+  - APP_NAME="Filament Viewable"
+  - DB_CONNECTION=sqlite
+
+# Package discovery leaves out the root package, so the plugin's own provider
+# is listed here the way an application would discover it.
+providers:
+  - CyrildeWit\FilamentViewable\FilamentViewableServiceProvider
+  - Workbench\App\Providers\WorkbenchServiceProvider
+  - Workbench\App\Providers\Filament\AdminPanelProvider
+
+migrations:
+  - workbench/database/migrations
+
+seeders:
+  - Workbench\Database\Seeders\DatabaseSeeder
+
+workbench:
+  start: '/admin'
+  install: true
+  health: false
+  discovers:
+    web: false
+    api: false
+    commands: false
+    components: false
+    views: false
+  build:
+    - asset-publish
+    - create-sqlite-db
+    - db-wipe
+    - migrate-fresh
+  assets:
+    - laravel-assets
+  sync: []
