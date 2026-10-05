@@ -31,7 +31,7 @@
     "require-dev": {
         "larastan/larastan": "^3.0",
         "laravel/pint": "^1.32",
-        "mockery/mockery": "^1.2.4",
+        "mockery/mockery": "^1.6.15",
         "orchestra/testbench": "^11.0",
         "pestphp/pest": "^5.3",
         "pestphp/pest-plugin-livewire": "^5.0",
