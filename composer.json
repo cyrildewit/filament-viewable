@@ -39,7 +39,7 @@
         "pestphp/pest-plugin-type-coverage": "^5.0",
         "phpstan/phpstan-deprecation-rules": "^2.0",
         "phpstan/phpstan-strict-rules": "^2.1",
-        "phpunit/php-code-coverage": "^14.4",
+        "phpunit/php-code-coverage": "^14.5",
         "rector/rector": "^2.7"
     },
     "autoload": {
